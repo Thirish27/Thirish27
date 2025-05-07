@@ -1,0 +1,56 @@
+# prompt: Guarding transactions with ai powered credit card fraud detection and prevention generate program
+
+import random
+
+class Transaction:
+    def __init__(self, amount, merchant, location, card_number):
+        self.amount = amount
+        self.merchant = merchant
+        self.location = location
+        self.card_number = card_number
+        self.is_fraudulent = False
+
+
+class FraudDetectionSystem:
+    def __init__(self):
+        # Placeholder for a more sophisticated model.
+        # In a real-world scenario, this would be a trained AI model.
+        self.model = None
+
+    def predict_fraud(self, transaction):
+      # Simulate AI prediction (replace with actual model in production)
+      # This example randomly assigns fraud probability,
+      # Replace this with a real AI prediction using transaction features.
+
+      fraud_probability = random.random()
+      return fraud_probability > 0.9  # Adjust the threshold as needed
+
+    def process_transaction(self, transaction):
+        is_fraudulent = self.predict_fraud(transaction)
+        if is_fraudulent:
+            print("Fraudulent transaction detected!")
+            transaction.is_fraudulent = True
+            # Implement actions like blocking the card, alerting authorities, etc.
+        else:
+            print("Transaction approved.")
+            # Implement actions for successful transaction processing
+
+
+# Example usage:
+fraud_detector = FraudDetectionSystem()
+
+transactions = [
+    Transaction(amount=100, merchant="Amazon", location="Seattle", card_number="1234-5678-9012-3456"),
+    Transaction(amount=5000, merchant="Shady Shop", location="Unknown", card_number="9876-5432-1098-7654"),  # Suspicious
+    Transaction(amount=25, merchant="Starbucks", location="New York", card_number="1111-2222-3333-4444"),
+]
+
+for transaction in transactions:
+    fraud_detector.process_transaction(transaction)
+
+#Further development:
+# 1. Implement a real machine learning model.
+# 2. Use a more realistic dataset.
+# 3. Enhance the prediction logic to consider more transaction details.
+# 4. Implement actions like card blocking and alerts for fraudulent transactions.
+# 5. Integrate with payment gateways and other systems for a complete solution
